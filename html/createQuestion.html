@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ウォークQラリー</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>問題文</div>
+    <div><input type="text" value="" id="question" /></div>
+    <div>選択肢</div>
+    <div>
+      <label><input type="radio" name="select" value="1" checked /></label>
+      <input type="text" value="" id="select1" />
+    </div>
+    <div>
+      <label><input type="radio" name="select" value="2" /></label>
+      <input type="text" value="" id="select2" />
+    </div>
+    <div>
+      <label><input type="radio" name="select" value="3" /></label>
+      <input type="text" value="" id="select3" />
+    </div>
+    <div><input type="button" value="登録する" onclick="buttonCreateClick()" /></div>
+    <div><input type="button" value="マップ画面に戻る" onclick="buttonMapClick()" /></div>
+    <p id="status"></p>
+    <a id="map-link" target="_blank"></a>
+  </body>
+  <script>
+    window.onload = function () {
+      geoFindMe();
+    };
+
+    function buttonCreateClick() {
+      const question = document.getElementById('question').value;
+      if (question == '') {
+        alert('問題文を入力してください');
+        return;
+      }
+      const select1 = document.getElementById('select1').value;
+      const select2 = document.getElementById('select2').value;
+      const select3 = document.getElementById('select3').value;
+      if (select1 == '' || select2 == '' || select3 == '') {
+        alert('すべての選択肢を作成してください');
+        return;
+      }
+      coordinates = sessionStorage.getItem('previousCoordinates');
+      quizdata = {
+        type: 'Feature',
+        properties: {
+          title: '',
+          description: '',
+          question: question,
+          select1: select1,
+          select2: select2,
+          select3: select3,
+          answer: 3,
+          images: '',
+        },
+        geometry: {
+          coordinates: coordinates,
+          type: 'Point',
+        },
+      };
+      window.location.href = 'created.html';
+    }
+    function buttonMapClick() {
+      window.location.href = 'qmap.html';
+    }
+    //位置情報取得
+    function geoFindMe() {
+      const status = document.querySelector('#status');
+      const mapLink = document.querySelector('#map-link');
+
+      mapLink.href = '';
+      mapLink.textContent = '';
+
+      function success(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const coordinates = [longitude, latitude];
+        if (window.localStorage) {
+          sessionStorage.setItem('previousCoordinates', coordinates);
+        }
+      }
+
+      function error() {
+        status.textContent = 'Unable to retrieve your location';
+      }
+
+      if (!navigator.geolocation) {
+        status.textContent = 'Geolocation is not supported by your browser';
+      } else {
+        //          status.textContent = 'Locating…';
+        navigator.geolocation.getCurrentPosition(success, error);
+      }
+    }
+  </script>
+</html>

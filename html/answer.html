@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>ウォークQラリー</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="quizArea">---深刻なエラーが発生しました。---深刻なエラーが</div>
+    <input type="button" value="マップ画面に戻る" onclick="buttonMapClick()" />
+  </body>
+  <script>
+    if (window.localStorage) {
+      const quizData = JSON.parse(sessionStorage.getItem('selectedQuizData'));
+      console.log(quizData.select1);
+      const qestion = '<div>問題：' + quizData.question + '</div>';
+      const select1 =
+        '<div><form><input type="button" value=' +
+        quizData.select1 +
+        ' onclick="buttonAnswerQuizClick()"></form>';
+      const select2 =
+        '<div><form><input type="button" value=' +
+        quizData.select2 +
+        ' onclick="buttonAnswerQuizClick()"></form>';
+      const select3 =
+        '<div><form><input type="button" value=' +
+        quizData.select3 +
+        ' onclick="buttonAnswerQuizClick()"></form>';
+
+      var quizArea = document.getElementById('quizArea');
+      quizArea.innerHTML = '<div>問題：' + quizData.question + '</div>';
+      quizArea.innerHTML +=
+        '<div><form><input type="button" value=' +
+        quizData.select1 +
+        ' onclick="buttonAnswerQuizClick(1, ' +
+        quizData.answer +
+        ')"></form>';
+      quizArea.innerHTML +=
+        '<div><form><input type="button" value=' +
+        quizData.select2 +
+        ' onclick="buttonAnswerQuizClick(2, ' +
+        quizData.answer +
+        ')"></form>';
+      quizArea.innerHTML +=
+        '<div><form><input type="button" value=' +
+        quizData.select3 +
+        ' onclick="buttonAnswerQuizClick(3, ' +
+        quizData.answer +
+        ')"></form>';
+    }
+    function buttonAnswerQuizClick(selectedNum, ansNum) {
+      window.location.href = selectedNum == ansNum ? 'correct.html' : 'incorrect.html';
+    }
+    function buttonMapClick() {
+      window.location.href = 'qmap.html';
+    }
+  </script>
+</html>

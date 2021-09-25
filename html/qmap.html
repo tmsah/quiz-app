@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Demo: Add points to a web map</title>
+    <title>ウォークQラリー</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
     <link href="https://api.tiles.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css" rel="stylesheet" />
@@ -84,6 +84,7 @@
           return;
         }
         const feature = features[0];
+        quizdata = JSON.stringify(feature.properties);
 
         const popup = new mapboxgl.Popup({ offset: [0, -15] })
           .setLngLat(feature.geometry.coordinates)
@@ -92,7 +93,7 @@
             <p>${feature.properties.question}</p>
             <p>
               <form>
-                <input type="button" value="このクイズに答える" onclick="buttonAnswerQuizClick(${feature.properties.question})">
+                <input type='button' value='このクイズに答える' onclick='buttonAnswerQuizClick(${quizdata})'>
               </form>
             </p>
             `
@@ -100,10 +101,13 @@
           .addTo(map);
       });
       function buttonCreateQuizClick() {
-        alert('Click');
+        window.location.href = 'createQuestion.html';
       }
-      function buttonAnswerQuizClick(quiz) {
-        console.log(quiz);
+      function buttonAnswerQuizClick(selectedQuizData) {
+        if (window.localStorage) {
+          sessionStorage.setItem('selectedQuizData', JSON.stringify(selectedQuizData));
+        }
+        window.location.href = 'answer.html';
       }
     </script>
   </body>
