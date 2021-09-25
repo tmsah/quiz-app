@@ -1,0 +1,158 @@
+{
+  "type": "geojson",
+  "data": {
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "厳島神社",
+          "description": "世界遺産の神社。",
+          "question": "この神社は世界遺産ですか？",
+          "select": ["はい", "いいえ", "どちらでもない"],
+          "answer": 3,
+          "images": ""
+        },
+        "geometry": {
+          "coordinates": [132.31979031908278, 34.29602170692237],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "厳島神社の鳥居",
+          "description": "潮の満ち引きでそばまで行けたり行けなかったりする。",
+          "question": "鳥居のそばに行ける時間は？",
+          "select": ["朝", "夜", "日時による"],
+          "answer": 3,
+          "images": ""
+        },
+        "geometry": {
+          "coordinates": [132.31914228660617, 34.29727954283565],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "右樂房",
+          "description": "神社の中",
+          "question": "ここで売っている交通安全のお守りの値段は？",
+          "select": ["300円", "400円", "500円"],
+          "answer": 3,
+          "images": ""
+        },
+        "geometry": {
+          "coordinates": [132.31966800800862, 34.296329574219065],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "道",
+          "description": "三叉路",
+          "question": "ここに立っている石碑に書かれている文字は？",
+          "select": ["神社祓殿", "神社平舞台", "神社本堂"],
+          "answer": 3,
+          "images": ""
+        },
+        "geometry": {
+          "coordinates": [132.32035008544648, 34.29531119507353],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "トイレ",
+          "description": "神社のそばのトイレ",
+          "question": "この建物の屋根の形は？",
+          "select": ["三角", "丸", "台形"],
+          "answer": 3,
+          "images": ""
+        },
+        "geometry": {
+          "coordinates": [132.31983110497694, 34.297295857125995],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "みち",
+          "description": "分かれ道",
+          "question": "ここに沢山生えている花は？",
+          "select": ["ツツジ", "ヒガンバナ", "アイリス"],
+          "answer": 3,
+          "images": ""
+        },
+        "geometry": {
+          "coordinates": [132.32080143056783, 34.29662304012648],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "石造燈籠",
+          "description": "海に出っ張ったところ",
+          "question": "灯籠に書いてある漢字一文字は？",
+          "select": ["石", "燈", "篭"],
+          "answer": 3,
+          "images": ""
+        },
+        "geometry": {
+          "coordinates": [132.31937975910526, 34.296329794395454],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "平舞台",
+          "description": "台風映像でよく映るところ",
+          "question": "橋に使われている板の枚数は？",
+          "select": ["20", "25", "30"],
+          "answer": 3,
+          "images": ""
+        },
+        "geometry": {
+          "coordinates": [132.3195058229165, 34.29623008040845],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "拝殿",
+          "description": "メインのところ",
+          "question": "拝殿を支えている柱の数は？",
+          "select": ["15", "17", "19"],
+          "answer": 3,
+          "images": ""
+        },
+        "geometry": {
+          "coordinates": [132.31970333937448, 34.29610073989814],
+          "type": "Point"
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "title": "入口",
+          "description": "お金がかかる",
+          "question": "拝観受付の窓口の数は？",
+          "select": ["3", "4", "5"],
+          "answer": 3,
+          "images": ""
+        },
+        "geometry": {
+          "coordinates": [132.31973868225967, 34.2967155182656],
+          "type": "Point"
+        }
+      }
+    ]
+  }
+}
