@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>クイズ出題画面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./css/question.css">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body>
+    <div class="content">
+        <!-- ロゴ -->
+        <div class="logo-area">
+            <img src="../images/logo.PNG" class="logo margin-large-top">
+        </div>
+
+        <!-- 位置情報 -->
+        <div id="map" class="map margin-small-top">
+        </div>
+        <script>
+            mapboxgl.accessToken = 'pk.eyJ1IjoibWF0c3V1cmExMjE5IiwiYSI6ImNrdDJobWVsejBwOXoycG4yM2dicTNvOGUifQ.9F7jQ0VPtqz-N5GG4p0ofA';
+            const map = new mapboxgl.Map({
+                container: 'map',
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [139.7671, 35.6812],
+                zoom: 17
+            });
+        </script>
+
+        <!-- 問題作成 -->
+        <div　class="questionbox">
+            <div id="questionBack" class="margin-small-top questionBack box">
+                <div id="backOrange" class="backOrange" ></div>
+                <div id="backWhite" class="backWhite">
+                    <div id="question" class="question">
+                        <div id="questionTopMenu" class="margin-small-top questionTopMenu">
+                            <div class="questionIcon backColorWhite">
+                                <img src="../images/IMG_1635.PNG" class="backColorWhite" width=25>
+                            </div>
+                            <div class="questionTop backColorWhite">Question</div>
+                        </div>
+                        <form name="q">
+                            <textarea rows="5" cols="40" name="question" id="question" style="background-color:#FFFFFF"></textarea>
+                        </form>
+                    </div>
+                    <div id="choices" class="choices">
+                        <div id="choicesTopMenu" class="margin-small-top questionTopMenu">
+                            <div class="questionIcon backColorWhite">
+                                <img src="../images/IMG_1638.PNG" class="backColorWhite" width=25>
+                            </div>
+                            <div class="questionTop backColorWhite">Choices</div>
+                        </div>
+                        <div id="choicesInput" class="margin-small-left backColorWhite">
+                            <tr><tb><input type="radio" name="select" value="1" checked></td>
+                                <td><input type="text" name="select1" id="select1" size="30" maxlength="20" style="background-color:#FFFFFF"></td></tr><br>
+                            <tr><tb><input type="radio" name="select" value="2"></td>
+                                <td><input type="text" name="select2" id="select2" size="30" maxlength="20" style="background-color:#FFFFFF"></td></tr><br>
+                            <tr><tb><input type="radio" name="select" value="3"></td>
+                                <td><input type="text" name="select3" id="select3" size="30" maxlength="20" style="background-color:#FFFFFF"></td></tr><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 問題送信 -->
+        <div id="createButton" class="margin-large-top questionSendButton box center" onclick="checkPopup()">クイズを出題する</div>
+    </div>
+
+    <!-- オーバーレイ -->
+    <div id="overlay" class="overlay">
+    </div>
+
+    <!-- ポップアップ画面1 -->
+    <div id="js-popup1" class="popup1">
+        <div class="confirm-message-block">
+            <p class="confirm-message">この内容で作成します</p>
+        </div>
+        <div class="confirm-botton-block">
+            <div id="js-confirm-yes" class="box confirm-yes" onclick="buttonCreateClick()">
+                <p class="botton-text">作成する</p>
+            </div>
+            <div id="js-confirm-no" class="box confirm-no">
+                <p class="botton-text">やめる</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ポップアップ画面2 -->
+    <div id="js-popup2" class="popup2">
+        <div class="confirm-message-block">
+            <p class="confirm-message">作成してくれて<br>ありがとう</p>
+        </div>
+        <div class="thanksIcon">
+            <img src="../images/IMG_0299.PNG" width=100 style="background-color:#FFFFFF">
+        </div>
+        <div class="confirm-message-block toMap" style="text-align:left;">
+            <div id="toMap" class="box" onclick="buttonMapClick()">
+                <p class="botton-text questionSendButton box center">マップに戻る</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- jsの読み込み -->
+    <script src="../js/script2.js"></script>
+    <script>
+    window.onload = function () {
+      geoFindMe();
+    };
+    function buttonMapClick() {
+      window.location.href = 'qmap.html';
+    }
+    function checkPopup() {
+        const question = document.q.question.value;
+        if (question == '') {
+            alert('問題文を入力してください');
+            return;
+        }
+        const select1 = document.getElementById('select1').value;
+        const select2 = document.getElementById('select2').value;
+        const select3 = document.getElementById('select3').value;
+        if (select1 == '' || select2 == '' || select3 == '') {
+            alert('すべての選択肢を作成してください');
+            return;
+        }
+        showPopup1();
+    };
+    function buttonCreateClick() {
+        const question = document.q.question.value;
+      console.log(question)
+      const select1 = document.getElementById('select1').value;
+      const select2 = document.getElementById('select2').value;
+      const select3 = document.getElementById('select3').value;
+      coordinates = sessionStorage.getItem('previousCoordinates');
+      quizdata = {
+        type: 'Feature',
+        properties: {
+          title: '',
+          description: '',
+          question: question,
+          select1: select1,
+          select2: select2,
+          select3: select3,
+          answer: 3,
+          images: '',
+        },
+        geometry: {
+          coordinates: coordinates,
+          type: 'Point',
+        },
+      };
+      console.log(quizdata)
+    }
+        //位置情報取得
+    function geoFindMe() {
+      const status = document.querySelector('#status');
+      const mapLink = document.querySelector('#map-link');
+
+      function success(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const coordinates = [longitude, latitude];
+        if (window.localStorage) {
+          sessionStorage.setItem('previousCoordinates', coordinates);
+        }
+      }
+
+      function error() {
+        status.textContent = 'Unable to retrieve your location';
+      }
+
+      if (!navigator.geolocation) {
+        status.textContent = 'Geolocation is not supported by your browser';
+      } else {
+        //          status.textContent = 'Locating…';
+        navigator.geolocation.getCurrentPosition(success, error);
+      }
+    }
+    </script>
+</body>
+</html>

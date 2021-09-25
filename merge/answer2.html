@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>クイズ回答画面</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="content">
+      <!-- ロゴ -->
+      <div class="logo-area">
+        <img src="img/logo.PNG" class="logo margin-large-top" />
+      </div>
+
+      <!-- 説明文 -->
+      <div class="box desc margin-small-bottom margin-small-top">
+        <p id="js-description" class="desc-area">
+          ここに立っている石碑に書かれている文字は？
+        </p>
+      </div>
+
+      <!-- 位置情報 -->
+      <div id="map" class="map box"></div>
+
+      <script>
+        mapboxgl.accessToken =
+          "pk.eyJ1IjoibWF0c3V1cmExMjE5IiwiYSI6ImNrdDJobWVsejBwOXoycG4yM2dicTNvOGUifQ.9F7jQ0VPtqz-N5GG4p0ofA";
+        const map = new mapboxgl.Map({
+          container: "map",
+          style: "mapbox://styles/mapbox/streets-v11",
+          center: [139.7671, 35.6812],
+          zoom: 9,
+        });
+      </script>
+
+      <!-- 回答1 -->
+      <div
+        id="js-answer1"
+        class="
+          box
+          answer answer-main-color
+          margin-small-bottom margin-large-top
+        "
+        onclick="showPopup1()"
+      >
+        <div class="circle"></div>
+
+        <p id="js-question1" class="question">神社本堂</p>
+      </div>
+
+      <!-- 回答2 -->
+      <div
+        id="js-answer2"
+        class="box answer answer-sub-color margin-small-bottom"
+      >
+        <div class="circle"></div>
+
+        <p id="js-question2" class="question">神社本堂</p>
+      </div>
+
+      <!-- 回答3 -->
+      <div
+        id="js-answer3"
+        class="box answer answer-main-color margin-small-bottom"
+      >
+        <div class="circle"></div>
+
+        <p id="js-question3" class="question">神社本堂</p>
+      </div>
+    </div>
+
+    <!-- オーバーレイ -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- ここから！！！！！ -->
+
+    <!-- ポップアップ画面1 -->
+    <div id="js-popup1" class="popup1">
+      <div class="confirm-message-block">
+        <p class="confirm-message">この内容で回答します</p>
+      </div>
+      <div class="confirm-botton-block">
+        <div id="js-confirm-yes" class="box confirm-yes">
+          <p class="botton-text">回答する</p>
+        </div>
+        <div id="js-confirm-no" class="box confirm-no">
+          <p class="botton-text">解き直す</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ポップアップ画面2(正解) -->
+    <div id="js-popup2" class="popup">
+      <div class="confirm-message-block">
+        <p class="confirm-message">正　解</p>
+      </div>
+      <div class="icon">
+        <img
+          src="img/IMG_0282.PNG"
+          width="100"
+          style="background-color: #ffffff"
+        />
+      </div>
+      <div class="confirm-message-block toMap" style="text-align: left">
+        <div id="toMap" class="box">
+          <p class="botton-text questionSendButton box center">マップに戻る</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ポップアップ画面3(不正解) -->
+    <div id="js-popup3" class="popup">
+      <div class="confirm-message-block">
+        <p class="confirm-message">残　念</p>
+        <p class="confirm-message">答えてくれてありがとう</p>
+      </div>
+      <div class="icon">
+        <img
+          src="img/IMG_0283.PNG"
+          width="100"
+          style="background-color: #ffffff"
+        />
+      </div>
+      <div class="message">
+        <div id="js-confirm-retry" class="box">
+          <p class="button1 box center">もう一度チャレンジ</p>
+        </div>
+      </div>
+      <div class="message">
+        <div id="js-confirm-toMap" class="box">
+          <p class="button2 box center">マップに戻る</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- jsの読み込み -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

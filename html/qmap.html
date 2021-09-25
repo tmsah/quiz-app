@@ -22,6 +22,11 @@
   <body>
     <div id="map"></div>
     <script>
+      var coordinates = JSON.parse(sessionStorage.getItem('selectedCoordinates'));
+      if (coordinates == undefined || coordinates == '') {
+        coordinates = [132.31979031908278, 34.29602170692237];
+      }
+
       mapboxgl.accessToken =
         'pk.eyJ1IjoibWF0c3V1cmExMjE5IiwiYSI6ImNrdDJobWVsejBwOXoycG4yM2dicTNvOGUifQ.9F7jQ0VPtqz-N5GG4p0ofA';
       //        'pk.eyJ1IjoibWF0c3V1cmExMjE5IiwiYSI6ImNrdDJobWVsejBwOXoycG4yM2dicTNvOGUifQ.9F7jQ0VPtqz-N5GG4p0ofA';
@@ -29,7 +34,7 @@
         container: 'map',
         style: 'mapbox://styles/matsuura1219/cktzgoj3t3jbk18qm6b4nadog',
         //        style: 'mapbox://styles/examples/cjgiiz9ck002j2ss5zur1vjji',
-        center: [132.31979031908278, 34.29602170692237],
+        center: coordinates,
         zoom: 17,
       });
 
@@ -52,11 +57,6 @@
                   source: 'points',
                   layout: {
                     'icon-image': 'custom-marker',
-                    // get the title name from the source's "title" property
-                    //                    'text-field': ['get', 'title'],
-                    //                    'text-font': ['Open Sans Semibold', 'Arial Unicode MS Bold'],
-                    //                  'text-offset': [0, 1.25],
-                    //                'text-anchor': 'top',
                   },
                 });
               }
@@ -73,18 +73,19 @@
             .setLngLat(lngLat.wrap())
             .setHTML(
               `
-            <p>
-              <form>
-                <input type="button" value="ここにクイズを作成する" onclick="buttonCreateQuizClick()">
-              </form>
-            </p>
+              <p style="color:#E66226", padding: 50px;><b>ここの場所でクイズを作成する</b></p>
+                <div style="text-align: center;">
+                  <button type="button", style="background: #E66226; border-radius:10px; margin:0 auto;" onclick="buttonCreateQuizClick()">
+                <p style="color:#FFFFFF; padding-left: 15px; padding-right: 10px;text-align: center; font-size: 15px" >作成ページ</p>
+                </button>
+                </div>
             `
             )
             .addTo(map);
           return;
         }
         const feature = features[0];
-        quizdata = JSON.stringify(feature.properties);
+        quizdata = JSON.stringify(feature);
 
         const popup = new mapboxgl.Popup({ offset: [0, -15] })
           .setLngLat(feature.geometry.coordinates)
@@ -101,13 +102,17 @@
           .addTo(map);
       });
       function buttonCreateQuizClick() {
-        window.location.href = 'createQuestion.html';
+        window.location.href = 'createQuestion_merge.html';
       }
       function buttonAnswerQuizClick(selectedQuizData) {
         if (window.localStorage) {
-          sessionStorage.setItem('selectedQuizData', JSON.stringify(selectedQuizData));
+          sessionStorage.setItem('selectedQuizData', JSON.stringify(selectedQuizData.properties));
+          sessionStorage.setItem(
+            'selectedCoordinates',
+            JSON.stringify(selectedQuizData.geometry.coordinates)
+          );
         }
-        window.location.href = 'answer.html';
+        window.location.href = 'answer_merged.html';
       }
     </script>
   </body>
