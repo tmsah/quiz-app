@@ -228,11 +228,11 @@
 
 .icon {
   text-align: center;
-  background-color: #ffffff;
+  background-color: #f7f6f5;
 }
 
 .button1 {
-  width: 100%;
+  width: 85%;
   height: 30px;
   margin-left: 20px;
   margin-right: 20px;
@@ -242,7 +242,7 @@
 }
 
 .button2 {
-  width: 100%;
+  width: 85%;
   height: 30px;
   margin-left: 20px;
   margin-right: 20px;

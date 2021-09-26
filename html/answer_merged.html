@@ -13,7 +13,7 @@
   <body>
     <div class="content">
       <!-- ロゴ -->
-      <div class="logo-area">
+      <div class="logo-area" onclick="buttonMapClick()">
         <img src="../images/logo.PNG" class="logo margin-large-top" />
       </div>
 
@@ -73,25 +73,59 @@
     <!-- オーバーレイ -->
     <div id="overlay" class="overlay"></div>
 
-    <!-- ポップアップ画面 -->
-    <div id="js-popup" class="popup">
+    <!-- ポップアップ画面1 -->
+    <div id="js-popup1" class="popup1">
       <div class="confirm-message-block">
         <p class="confirm-message">この内容で回答します</p>
       </div>
-
       <div class="confirm-botton-block">
         <div id="js-confirm-yes" class="box confirm-yes" onclick="buttonAnswerQuizClick()">
           <p class="botton-text">回答する</p>
         </div>
-
         <div id="js-confirm-no" class="box confirm-no">
           <p class="botton-text">解き直す</p>
         </div>
       </div>
     </div>
 
+    <!-- ポップアップ画面2(正解) -->
+    <div id="js-popup2" class="popup">
+      <div class="confirm-message-block">
+        <p class="confirm-message">正　解</p>
+      </div>
+      <div class="icon">
+        <img src="../images/IMG_0282.PNG" width="100" style="background-color: #ffffff" />
+      </div>
+      <div class="confirm-message-block toMap" style="text-align: left">
+        <div id="toMap" class="box" onclick="buttonMapClick()">
+          <p class="botton-text questionSendButton box center">マップに戻る</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ポップアップ画面3(不正解) -->
+    <div id="js-popup3" class="popup">
+      <div class="confirm-message-block">
+        <p class="confirm-message">残　念</p>
+        <p class="confirm-message">答えてくれてありがとう</p>
+      </div>
+      <div class="icon">
+        <img src="../images/IMG_0283.PNG" width="100" />
+      </div>
+      <div class="message">
+        <div id="js-confirm-retry" class="box">
+          <p class="button1 box center">もう一度チャレンジ</p>
+        </div>
+      </div>
+      <div class="message">
+        <div id="js-confirm-toMap" class="box" onclick="buttonMapClick()">
+          <p class="button2 box center">マップに戻る</p>
+        </div>
+      </div>
+    </div>
+
     <!-- jsの読み込み -->
-    <script src="../js/script.js"></script>
+    <script src="../js/script3.js"></script>
     <script>
       if (window.localStorage) {
         const quizData = JSON.parse(sessionStorage.getItem('selectedQuizData'));
@@ -108,13 +142,17 @@
         if (window.localStorage) {
           sessionStorage.setItem('selectedNum', JSON.stringify(selectedNum));
         }
-        showPopup();
+        showPopup1();
       }
       function buttonAnswerQuizClick() {
         const selectedNum = sessionStorage.getItem('selectedNum');
         const quizData = JSON.parse(sessionStorage.getItem('selectedQuizData'));
         const ansNum = quizData.answer;
-        window.location.href = selectedNum == ansNum ? 'correct.html' : 'incorrect.html';
+        if (selectedNum == ansNum) {
+          showPopup2();
+        } else {
+          showPopup3();
+        }
       }
       function buttonMapClick() {
         window.location.href = 'qmap.html';

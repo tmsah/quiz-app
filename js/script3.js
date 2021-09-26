@@ -74,8 +74,6 @@
     // イベントが発生した時に動かす処理を記述
     //回答が正しいか判定する
     hiddenPopup1();
-    // showPopup2();       //正しい時
-    showPopup3(); //不正解の時
   });
 
   no.addEventListener("click", () => {
@@ -90,7 +88,6 @@
 
   retry.addEventListener("click", () => {
     // イベントが発生した時に動かす処理を記述
-    console.log("!!!!!!!!!!");
     hiddenPopup3();
   });
 

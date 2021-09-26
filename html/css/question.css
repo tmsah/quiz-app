@@ -1,270 +1,295 @@
 * {
-    margin: 0px;
-    padding: 0;
-    background-color: #F7F6F5;
+  margin: 0px;
+  padding: 0;
+  background-color: #f7f6f5;
 }
 
-html{
-    overflow-x:hidden;
+html {
+  overflow-x: hidden;
 }
 
-body{
-    min-width : 375px;
-    overflow-x:hidden;
+body {
+  min-width: 375px;
+  overflow-x: hidden;
 }
 
-.backColorWhite{
-    background-color: #FFFFFF;
+.backColorWhite {
+  background-color: #ffffff;
 }
 
 .content {
-    width : 100%;
+  width: 100%;
 }
 
 .logo-area {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .logo {
-    width: 40%;
+  width: 40%;
+}
+.margin-small-top img {
+  width: 100%;
+}
+.comment {
+  color: #ffffff;
 }
 
 .map {
-    height: 100px;
-    width: 100%;
-    background-color: #FFFFFF;
+  position: relative;
+}
+.ichi img {
+  background-color: transparent;
+  width: 15%;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+.map f1 {
+  position: absolute;
+  font-size: large;
+  top: 10px;
+  left: 65px;
+}
+.map p {
+  position: absolute;
+  font-size: large;
+  bottom: 0;
+  right: 0;
+}
+
+.moji {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.map {
+  height: 100px;
+  width: 100%;
+  background-color: #ffffff;
 }
 
 .box {
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 .desc {
-    height: 150px;
-    width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #FFFFFF;
-    align-content: center;
-    display:table;
-  
+  height: 150px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #ffffff;
+  align-content: center;
+  display: table;
 }
 
 .margin-large-top {
-    margin-top: 36px;
+  margin-top: 36px;
 }
 
 .margin-small-top {
-    margin-top: 16px;
+  margin-top: 16px;
 }
 
-.questionbox{
-    height: 300px;
-    width : 100%;
+.questionbox {
+  height: 300px;
+  width: 100%;
 }
 
-.questionBack{
-    display:table;
-    width:100%;
+.questionBack {
+  display: table;
+  width: 100%;
 }
 
 .backOrange {
-    height: 300px;
-    display:table-cell;
-    width:50px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    background-color: #E66226;
+  height: 300px;
+  display: table-cell;
+  width: 50px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: #e66226;
 }
 
 .backWhite {
-    height: 300px;
-    display:table-cell;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    background-color: #FFFFFF;
+  height: 300px;
+  display: table-cell;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: #ffffff;
 }
 
 .question {
-    height: 40%;
-    width : 100%;
-    background-color: #FFFFFF;
+  height: 40%;
+  width: 100%;
+  background-color: #ffffff;
 }
 
 .choices {
-    height: 50%;
-    width : 100%;
-    background-color: #FFFFFF;
+  height: 50%;
+  width: 100%;
+  background-color: #ffffff;
 }
 
-form{
-    margin-left : 25px;
-    background-color: #FFFFFF;
+form {
+  margin-left: 25px;
+  background-color: #ffffff;
 }
 
-input{
-    background-color: #FFFFFF;
+input {
+  background-color: #ffffff;
 }
 
-.questionTopMenu{
-    display:table;
-    width:100%;
+.questionTopMenu {
+  display: table;
+  width: 100%;
 }
 
-.questionIcon{
-    height: 20px;
-    width: 20px;
-    display:table-cell;
+.questionIcon {
+  height: 20px;
+  width: 20px;
+  display: table-cell;
 }
 
-.questionTop{
-    height: 20px;
-    display:table-cell;
-    color: #E66226;
-    font-size: large;
+.questionTop {
+  height: 20px;
+  display: table-cell;
+  color: #e66226;
+  font-size: large;
 }
 
-.questionSendButton{
-    height: 40px;
-    margin-left: 20px;
-    margin-right: 20px;
-    background-color: #E66226;
-    font-size: large;
-    color: #F7F6F5;
+.questionSendButton {
+  height: 40px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #e66226;
+  font-size: large;
+  color: #f7f6f5;
 }
 
-.center{
-    text-align: center;
-    align-content: center;
-    vertical-align: middle; 
+.center {
+  text-align: center;
+  align-content: center;
+  vertical-align: middle;
 }
 
-.margin-small-left{
-    margin-left: 20px;
+.margin-small-left {
+  margin-left: 20px;
 }
 
-.thanksIcon{
-    text-align: center;
-    background-color: #FFFFFF;
+.thanksIcon {
+  text-align: center;
+  background-color: #ffffff;
 }
 
-.toMap{
-    height: 40px;
-    margin-right: 20px;
-    font-size: large;
-    color: #F7F6F5;
+.toMap {
+  height: 40px;
+  margin-right: 20px;
+  font-size: large;
+  color: #f7f6f5;
 }
-
-
-
-
-
-
 
 .overlay {
-    position: fixed;
-    left: 0; 
-    top: 0;
-    width: 100%; 
-    height: 100%;
-    background-color: #000000;
-    opacity: 0.5;
-    z-index: 100;
-    
-    visibility: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  opacity: 0.5;
+  z-index: 100;
+
+  visibility: hidden;
 }
 
-
 .popup1 {
-    position: fixed;
-    left: 15%; 
-    top: 30%;
-    width: 70%; 
-    height: 25%;
-    background-color: #FFFFFF;
-    z-index: 200;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+  position: fixed;
+  left: 15%;
+  top: 30%;
+  width: 70%;
+  height: 25%;
+  background-color: #ffffff;
+  z-index: 200;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .popup2 {
-    position: fixed;
-    left: 15%; 
-    top: 30%;
-    width: 70%; 
-    height: 40%;
-    background-color: #FFFFFF;
-    z-index: 200;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+  position: fixed;
+  left: 15%;
+  top: 30%;
+  width: 70%;
+  height: 40%;
+  background-color: #ffffff;
+  z-index: 200;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .confirm-message-block {
-    position: relative;
-    left: 10%; 
-    top: 0%;
-    width: 80%; 
-    height: 30%;
-    display: block;
-    background-color: #FFFFFF;
+  position: relative;
+  left: 10%;
+  top: 0%;
+  width: 80%;
+  height: 30%;
+  display: block;
+  background-color: #ffffff;
 }
 
 .confirm-message {
-    position: relative;
-    top: 30px;
-    text-align: center;
-    background-color: #FFFFFF;
+  position: relative;
+  top: 30px;
+  text-align: center;
+  background-color: #ffffff;
 }
 
-
 .confirm-botton-block {
-    position: relative;
-    left: 10%; 
-    top: 10%;
-    width: 80%; 
-    height: 50%;
-    background-color: #FFFFFF;
+  position: relative;
+  left: 10%;
+  top: 10%;
+  width: 80%;
+  height: 50%;
+  background-color: #ffffff;
 }
 
 .confirm-yes {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 45%;
-    height: 90%;
-    background-color: #E66226;
-    z-index: 300;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 45%;
+  height: 90%;
+  background-color: #e66226;
+  z-index: 300;
 }
 
 .confirm-no {
-    position: absolute;
-    color: #FFFFFF;
-    top: 0%;
-    left: 55%;
-    width: 45%;
-    height: 90%;
-    background-color: #E66226;
-    z-index: 300;
+  position: absolute;
+  color: #ffffff;
+  top: 0%;
+  left: 55%;
+  width: 45%;
+  height: 90%;
+  background-color: #e66226;
+  z-index: 300;
 }
 
 .botton-text {
-    position: absolute;
-    top: 35%;
-    left: 0px;
-    width: 100%;
-    color: #FFFFFF;
-    background-color: #E66226;
-    text-align: center;
+  position: absolute;
+  top: 35%;
+  left: 0px;
+  width: 100%;
+  color: #ffffff;
+  background-color: #e66226;
+  text-align: center;
 }
