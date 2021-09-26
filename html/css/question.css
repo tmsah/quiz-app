@@ -163,6 +163,7 @@ input {
 
 .questionSendButton {
   height: 40px;
+  line-height: 40px;
   margin-left: 20px;
   margin-right: 20px;
   background-color: #e66226;
@@ -190,6 +191,9 @@ input {
   margin-right: 20px;
   font-size: large;
   color: #f7f6f5;
+}
+.toMap p {
+  width: 80%;
 }
 
 .overlay {

@@ -123,11 +123,19 @@
         showPopup1();
     };
     function buttonCreateClick() {
-        const question = document.q.question.value;
-      console.log(question)
+      const question = document.q.question.value;
       const select1 = document.getElementById('select1').value;
       const select2 = document.getElementById('select2').value;
       const select3 = document.getElementById('select3').value;
+      var elements = document.getElementsByName( "select");
+      var answer = 0;
+      for ( var i = 0, i=elements.length; i--; ) {
+        if ( elements[i].checked ) {
+            answer = Number(elements[i].value);
+            break;
+        } 
+      }
+      console.log(answer);
       coordinates = sessionStorage.getItem('previousCoordinates');
       quizdata = {
         type: 'Feature',
@@ -138,7 +146,7 @@
           select1: select1,
           select2: select2,
           select3: select3,
-          answer: 3,
+          answer: answer,
           images: '',
         },
         geometry: {
